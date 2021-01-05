@@ -1,17 +1,34 @@
 <template>
-  <div class="chat">
-    <chatLobby/>
+  <div class="view-wrap">
+    <modalWrap />
+    <infoWrap />
+    <router-view />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import chatLobby from '@/components/chatLobby.vue'
-
+import infoWrap from "@/components/infoWrap.vue";
+import modalWrap from "@/components/modalWrap.vue";
 export default {
-  name: 'chat',
+  created() {
+    //this does not work
+    // this.$socket.on("roomListResponse", (packet) => {
+    //   console.log(packet);
+    // });
+    this.sockets.subscribe("roomListResponse", (packet) => {
+      console.log(packet);
+    });
+    this.$socket.emit("roomList");
+  },
+  name: "chat",
   components: {
-    chatLobby
-  }
-}
+    infoWrap,
+    modalWrap,
+  },
+  data() {
+    return {
+      
+    };
+  },
+};
 </script>

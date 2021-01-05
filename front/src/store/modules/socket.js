@@ -92,8 +92,8 @@ const mutations = {
     // [Constant.PUSH_MSG_DATA]: ($state, $payload) => {
     //     $state.msgDatas.push($payload);
     // },
-    Socket.on
-    $state.onlineUsers = $payload
+    // Socket.on
+    // $state.onlineUsers = $payload
 };
 
 export default {
